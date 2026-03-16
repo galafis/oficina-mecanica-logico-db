@@ -1,84 +1,90 @@
 # Projeto Logico de Banco de Dados - Oficina Mecanica
 
-## Descricao
+<div align="center">
 
-Este projeto implementa o **esquema logico** de banco de dados para o cenario de uma **Oficina Mecanica**, desenvolvido como parte da Formacao SQL DB Specialist da [DIO](https://www.dio.me/).
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-DDL%20%7C%20DML%20%7C%20DQL-blue?style=for-the-badge)
+![License: MIT](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-O projeto parte do [esquema conceitual](https://github.com/galafis/oficina-mecanica-conceitual-db) previamente criado e implementa o mapeamento para o modelo relacional, incluindo scripts DDL, dados de teste e consultas SQL complexas.
+**[PT-BR](#sobre-o-projeto) | [English](#about-the-project)**
 
-## Contexto do Negocio
-
-O sistema gerencia o controle e execucao de ordens de servico em uma oficina mecanica:
-
-- **Clientes** levam seus **veiculos** para conserto ou revisao
-- Cada veiculo e designado a uma **equipe de mecanicos**
-- A equipe preenche uma **Ordem de Servico (OS)** com servicos e pecas necessarios
-- O **cliente autoriza** a execucao dos servicos
-- A OS possui **status**, **valor total** e **datas** de controle
-
-## Esquema Logico
-
-### Entidades Principais
-
-- **Cliente**: Dados cadastrais dos clientes
-- **Veiculo**: Veiculos dos clientes (relacao 1:N com Cliente)
-- **Mecanico**: Profissionais com codigo, nome, endereco e especialidade
-- **Equipe**: Equipes de mecanicos (relacao N:M com Mecanico)
-- **OrdemDeServico**: OS com numero, datas, valor, status e autorizacao
-- **Servico**: Tabela de referencia de servicos e valores de mao de obra
-- **Peca**: Catalogo de pecas com valores unitarios
-
-### Tabelas Associativas
-
-- **EquipeMecanico**: Associacao N:M entre Equipe e Mecanico
-- **ServicoOS**: Servicos executados em cada OS (N:M)
-- **PecaOS**: Pecas utilizadas em cada OS (N:M)
-
-## Estrutura do Projeto
-
-```
-oficina-mecanica-logico-db/
-|-- README.md
-|-- schema.sql          # Script DDL - Criacao do esquema
-|-- data.sql            # Script DML - Dados de teste
-|-- queries.sql         # Consultas SQL complexas
-```
-
-## Consultas Implementadas
-
-- **SELECT**: Recuperacoes simples de dados
-- **WHERE**: Filtros condicionais
-- **Expressoes**: Atributos derivados (valor total, dias em aberto)
-- **ORDER BY**: Ordenacao de resultados
-- **HAVING**: Filtros sobre grupos agregados
-- **JOIN**: Juncoes entre tabelas
-
-### Perguntas Respondidas
-
-1. Quantas OS cada cliente possui?
-2. Qual o valor total gasto por cliente?
-3. Quais mecanicos pertencem a mais de uma equipe?
-4. Quais OS estao em aberto ha mais de 7 dias?
-5. Qual a receita total por tipo de servico?
-6. Quais pecas foram mais utilizadas?
-7. Qual equipe gerou mais receita?
-8. Quais veiculos tiveram mais de 2 OS?
-
-## Tecnologias
-
-- MySQL 8.0+
-- SQL (DDL, DML, DQL)
-
-## Como Executar
-
-1. Execute `schema.sql` para criar o banco e as tabelas
-2. Execute `data.sql` para popular com dados de teste
-3. Execute `queries.sql` para analisar os dados
-
-## Autor
-
-**Gabriel Demetrios Lafis** - [GitHub](https://github.com/galafis)
+</div>
 
 ---
 
-Desenvolvido como parte da **Formacao SQL DB Specialist** - [DIO](https://www.dio.me/)
+<a name="sobre-o-projeto"></a>
+
+## Sobre o Projeto
+
+> Desafio de projeto da **Formacao SQL Database Specialist** -- [DIO (Digital Innovation One)](https://www.dio.me/)
+
+Este projeto implementa o esquema logico de banco de dados para uma Oficina Mecanica, partindo do [esquema conceitual](https://github.com/galafis/oficina-mecanica-conceitual-db). Inclui scripts DDL, dados de teste e consultas SQL complexas para analise operacional.
+
+---
+
+## Pipeline de Implementacao
+
+```mermaid
+flowchart LR
+    A[Modelo\\nConceitual] --> B[Schema DDL\\nCriacao]
+    B --> C[Dados DML\\nInsercao]
+    C --> D[Queries DQL\\nConsultas]
+    D --> E[Analise\\nOperacional]
+
+    style A fill:#4479A1,color:#fff,stroke:#2c5f8a
+    style B fill:#e67e22,color:#fff,stroke:#cc6a1e
+    style D fill:#3776AB,color:#fff,stroke:#2a5a8a
+    style E fill:#155724,color:#fff,stroke:#0e3a18
+```
+
+---
+
+## Conteudo do Repositorio
+
+| Arquivo | Descricao |
+|---|---|
+| `schema.sql` | Script DDL - Criacao do esquema |
+| `data.sql` | Script DML - Dados de teste |
+| `queries.sql` | Consultas SQL complexas |
+| `LICENSE` | Licenca MIT |
+
+## Consultas Implementadas
+
+- OS por cliente, valor total gasto, mecanicos em multiplas equipes
+- OS em aberto ha mais de 7 dias, receita por tipo de servico
+- Pecas mais utilizadas, equipe com maior receita, veiculos com mais de 2 OS
+
+## Como Executar
+
+```bash
+# No MySQL:
+source schema.sql
+source data.sql
+source queries.sql
+```
+
+## Aplicacao na Industria
+
+Sistemas de gestao de oficinas mecanicas sao essenciais para controle operacional, rastreabilidade de servicos e otimizacao de recursos em empresas do setor automotivo.
+
+---
+
+<a name="about-the-project"></a>
+
+## English
+
+### About the Project
+
+> Project challenge from the **SQL Database Specialist** program -- [DIO](https://www.dio.me/)
+
+This project implements the logical database schema for a Car Repair Shop, building upon the [conceptual model](https://github.com/galafis/oficina-mecanica-conceitual-db). It includes DDL scripts, test data, and complex SQL queries for operational analysis.
+
+---
+
+## Licenca | License
+
+Este projeto esta licenciado sob a [Licenca MIT](LICENSE). | This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Developed by [Gabriel Demetrios Lafis](https://github.com/galafis)
